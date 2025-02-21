@@ -45,3 +45,7 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Jupyter Notebook
+*.ipynb
+.ipynb_checkpoints/
