@@ -3,7 +3,7 @@ from pandas import DataFrame
 from ..menu2205 import get_preprocessed_menu2205_snapshot, get_preprocessed_menu2205
 from financial_dataset_preprocessor.general_preprocess_utils import map_ticker_to_ticker_bbg
 
-COLUMN_NAMES_FOR_MATCHING_CORPNAME =['자산', '종목명', '종목정보: 발행기관']
+COLUMNS_ORDERED_FOR_MATCHING_CORPNAME =['자산', '종목명', '종목코드', '종목정보: 발행기관', 'hotfix']
 
 MAPPING_NAMES_TO_CORPNAMES_FOR_EXCEPTIONS = {
     '그래피2우선주(전환상환)': '그래피',
@@ -32,9 +32,9 @@ def filter_by_conditions(df: DataFrame) -> DataFrame:
        (df['자산'].str.contains('국내주식|국내채권'))
    ]
 
-def set_bbg_ticker_as_index(df: DataFrame) -> DataFrame:
-   df.index = df.apply(
-       lambda row: map_ticker_to_ticker_bbg(row['종목'][3:-3]) 
+def set_ticker_column(df: DataFrame) -> DataFrame:
+   df['종목코드'] = df.apply(
+       lambda row: row['종목'][3:-3] 
        if row['자산']=='국내주식' else None, 
        axis=1
    )
@@ -50,20 +50,50 @@ def apply_hotfix_mapping(df: DataFrame) -> DataFrame:
        
    return df
 
+def drop_duplicated_corpnames(df: DataFrame) -> DataFrame:
+    df = df[~df['종목명'].duplicated(keep='last')].reset_index()
+    return df
+
 def get_df_holdings_corpname(date_ref=None) -> DataFrame:
    return (
        get_preprocessed_menu2205_snapshot(date_ref)
        .pipe(filter_by_conditions)
-       .pipe(set_bbg_ticker_as_index)
-       .loc[:, COLUMN_NAMES_FOR_MATCHING_CORPNAME]
+       .pipe(set_ticker_column)
+       .pipe(drop_duplicated_corpnames)
        .pipe(apply_hotfix_mapping)
+       .loc[:, COLUMNS_ORDERED_FOR_MATCHING_CORPNAME]
    )
 
 def get_df_fund_holdings_corpname(fund_code,date_ref=None) -> DataFrame:
    return (
        get_preprocessed_menu2205(fund_code, date_ref)
        .pipe(filter_by_conditions)
-       .pipe(set_bbg_ticker_as_index)
-       .loc[:, COLUMN_NAMES_FOR_MATCHING_CORPNAME]
+       .pipe(set_ticker_column)
+       .pipe(drop_duplicated_corpnames)
        .pipe(apply_hotfix_mapping)
+       .loc[:, COLUMNS_ORDERED_FOR_MATCHING_CORPNAME]
+   )
+
+def get_df_stock_holdings_corpname(date_ref=None) -> DataFrame:
+   return (
+       get_df_holdings_corpname(date_ref)
+       .query("자산=='국내주식'")
+   )
+
+def get_df_bond_holdings_corpname(date_ref=None) -> DataFrame:
+   return (
+       get_df_holdings_corpname(date_ref)
+       .query("자산=='국내채권'")
+   )
+
+def get_df_fund_stock_holdings_corpname(fund_code, date_ref=None) -> DataFrame:
+   return (
+       get_df_fund_holdings_corpname(fund_code, date_ref)
+       .query("자산=='국내주식'")
+   )
+
+def get_df_fund_bond_holdings_corpname(fund_code, date_ref=None) -> DataFrame:
+   return (
+       get_df_fund_holdings_corpname(fund_code, date_ref)
+       .query("자산=='국내채권'")
    )
