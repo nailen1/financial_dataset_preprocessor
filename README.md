@@ -30,7 +30,7 @@ pip install financial_dataset_preprocessor
 ### 1. Search for Funds with Bonds
 
 ```python
-from financial_dataset_preprocessor.menu2205_preprocessor.menu2205_applications.domestic_bonds import (
+from financial_dataset_preprocessor import (
     search_funds_having_domestic_bonds,
     get_domestic_bonds_by_fund
 )
@@ -46,7 +46,7 @@ bond_details = get_domestic_bonds_by_fund(fund_code=fund_code, date_ref='2025-02
 ### 2. Analyze Fund Borrowings
 
 ```python
-from financial_dataset_preprocessor.menu2205_preprocessor.menu2205_applications.borrowings import (
+from financial_dataset_preprocessor import (
     search_funds_having_borrowings,
     get_borriwings_by_fund
 )
@@ -62,7 +62,7 @@ borrowing_details = get_borriwings_by_fund(fund_code=fund_code, date_ref='2025-0
 ### 3. Check Repo Agreements
 
 ```python
-from financial_dataset_preprocessor.menu2205_preprocessor.menu2205_applications.repos import (
+from financial_dataset_preprocessor import (
     search_funds_having_repos,
     get_repos_by_fund
 )

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='financial_dataset_preprocessor',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     install_requires=[
         'pandas',
@@ -11,7 +11,7 @@ setup(
     ],
     author='June Young Park',
     author_email='juneyoungpaak@gmail.com',
-    description='A package for preprocessing financial datasets',
+    description='A package for preprocessing financial datasets, powering the Life Asset Management development team.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/nailen1/financial_dataset_preprocessor',
