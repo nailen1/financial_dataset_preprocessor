@@ -1,3 +1,5 @@
+COLUMN_NAMES_MENU2205_PREPROCESSED_HOTFIX_UNTIL_20241231 = ['원화 보유정보: 미수/미지급이자']
+
 COLUMN_NAMES_PREPROCESSED_TOBE_NUMBER_MENU2205 = ['원화 보유정보: 수량', '원화 보유정보: 매매가능수량', '원화 보유정보: 장부가액',
        '원화 보유정보: 평가액', '원화 보유정보: 취득액', '원화 보유정보: 평가손익', '원화 보유정보: 손익률',
        '원화 보유정보: 취득단가', '원화 보유정보: 미수이자', '원화 보유정보: 선급비용', '원화 보유정보: 상환손익',
@@ -13,7 +15,7 @@ COLUMN_NAMES_PREPROCESSED_TOBE_NUMBER_MENU2205 = ['원화 보유정보: 수량',
        '종목정보: KBP컨벡시티', '종목정보: KIS듀레이션', '종목정보: KIS컨벡시티', '종목정보: NICE듀레이션',
        '종목정보: NICE컨벡시티', '종목정보: FNP듀레이션', '종목정보: FNP컨벡시티',
        '종목정보: 잔존일수', '종목정보: 시가총액', '자산정보: 순자산', '자산정보: 총자산', '자산정보: 기준가격',
-       '자산정보: 증감']
+       '자산정보: 증감'] + COLUMN_NAMES_MENU2205_PREPROCESSED_HOTFIX_UNTIL_20241231
 
 
 COLUMN_NAMES_PREPROCESSED_TOBE_INTEGER_MENU2205 = [

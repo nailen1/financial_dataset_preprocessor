@@ -1,4 +1,4 @@
-from canonical_transformer import map_df_to_data
+from canonical_transformer import map_df_to_data, map_df_to_some_data
 
 def get_all_mappings_of_df(df):
     df_ref = df
@@ -13,3 +13,8 @@ def get_all_mappings_of_df(df):
     
 def get_grouped_dfs_of_df(df, col):
     return dict(tuple(df.groupby(col)))
+
+def get_mapping_of_column_pairs(df, key_col, value_col):
+    data = map_df_to_some_data(df=df, cols=[key_col, value_col])
+    mapping = {datum[key_col]: datum[value_col] for datum in data}
+    return mapping
