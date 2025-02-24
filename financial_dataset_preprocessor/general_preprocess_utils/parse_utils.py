@@ -46,3 +46,16 @@ def transform_fund_code_float_to_string(fund_code):
     elif isinstance(fund_code, np.number):
         fund_code = str(int(fund_code)).replace('.0', '').zfill(6)
     return fund_code
+
+def ensure_n_digits_code(corpcode, n):
+    if pd.isna(corpcode):
+        return None
+    if isinstance(corpcode, float):
+        corpcode = str(int(corpcode)).replace('.0', '').zfill(n)
+    elif isinstance(corpcode, int):
+        corpcode = str(corpcode).zfill(n)
+    elif isinstance(corpcode, str):
+        corpcode = corpcode.replace('.0', '').zfill(n)
+    elif isinstance(corpcode, np.number):
+        corpcode = str(int(corpcode)).replace('.0', '').zfill(n)
+    return corpcode
