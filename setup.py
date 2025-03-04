@@ -2,12 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name='financial_dataset_preprocessor',
-    version='0.1.6',
+    version='0.1.7',
     packages=find_packages(),
     install_requires=[
         'pandas',
-        'numpy',
-        'financial_dataset_loader',
+        'tqdm',
+        'string_date_controller',
+        'financial_dataset_loader >= 0.2.3',
+        'canonical_transformer >= 0.2.3',
     ],
     author='June Young Park',
     author_email='juneyoungpaak@gmail.com',
