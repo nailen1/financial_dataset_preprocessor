@@ -97,23 +97,23 @@ def get_grouped_dfs_of_menu2205_by_fund(fund_code, col, date_ref=None):
 #        '국내수익증권(ETF)', '외화주식', '외화현금성', '외화스왑', '기타', '기타(총계정원장)', '총계정원장',
 #        '차입금']
 
-def search_asset_by_keyword(keyword, date_ref=None):
+def search_assets_by_keyword(keyword, date_ref=None):
     df = get_preprocessed_menu2205_snapshot(date_ref=date_ref)
     df = df[df['종목명'].str.contains(keyword)]
     return df
 
-def search_asset_by_keyword_in_fund(keyword, fund_code, date_ref=None):
+def search_assets_by_keyword_in_fund(keyword, fund_code, date_ref=None):
     df = get_preprocessed_menu2205(fund_code=fund_code, date_ref=date_ref)
     df = df[df['종목명'].str.contains(keyword)]
     return df
 
-def search_asset_including_keywords(keywords, date_ref=None):
+def search_assets_including_keywords(keywords, date_ref=None):
     df = get_preprocessed_menu2205_snapshot(date_ref=date_ref)
     reg_keywords = '|'.join(keywords)
     df = df[df['종목명'].str.contains(reg_keywords)]
     return df
 
-def search_asset_including_keywords_in_fund(keywords, fund_code, date_ref=None):
+def search_assets_including_keywords_in_fund(keywords, fund_code, date_ref=None):
     df = get_preprocessed_menu2205(fund_code=fund_code, date_ref=date_ref)
     reg_keywords = '|'.join(keywords)
     df = df[df['종목명'].str.contains(reg_keywords)]
