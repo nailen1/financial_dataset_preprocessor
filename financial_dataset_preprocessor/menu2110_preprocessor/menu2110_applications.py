@@ -64,3 +64,8 @@ def get_fund_codes_class(date_ref=None):
     fund_codes = get_fund_codes_by_class_name(class_name='클래스펀드', date_ref=date_ref)
     return fund_codes
 
+def get_fund_codes_main(date_ref=None):
+    df = get_df_fund_class_sorted(date_ref=date_ref)
+    df = df[df['클래스구분']!='클래스펀드']
+    fund_codes = list(df.index)
+    return fund_codes
