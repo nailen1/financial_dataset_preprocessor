@@ -21,7 +21,6 @@ def get_df_preprocessed_column_menu2205(menu2205: DataFrame) -> DataFrame:
         .pipe(combine_column_names_2)
     )
 
-
 def get_preprocessed_column_names_menu2205(menu2205: DataFrame) -> list[str]:
     df = get_df_preprocessed_column_menu2205(menu2205)
     return list(df.iloc[:,-1])
