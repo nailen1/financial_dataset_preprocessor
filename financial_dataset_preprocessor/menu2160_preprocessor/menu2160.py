@@ -17,8 +17,8 @@ def preprocess_raw_menu2160(menu2160: DataFrame) -> DataFrame:
 def get_preprocessed_menu2160(fund_code):
     return preprocess_raw_menu2160(load_menu2160(fund_code))
 
-def get_preprocessed_menu2160_snapshot(fund_code):
-    return preprocess_raw_menu2160(load_menu2160_snapshot(fund_code))
+def get_preprocessed_menu2160_snapshot(date_ref=None):
+    return preprocess_raw_menu2160(load_menu2160_snapshot(date_ref=date_ref))
 
 map_raw_to_preprocessed_menu2160 = preprocess_raw_menu2160
 map_fund_code_to_preprocessed_menu2160 = get_preprocessed_menu2160
