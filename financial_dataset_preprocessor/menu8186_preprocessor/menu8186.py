@@ -16,9 +16,8 @@ def preprocess_raw_menu8186(menu8186: DataFrame) -> DataFrame:
         .pipe(preprocess_cols_num_menu8186)
         .pipe(drop_non_indexed_rows)
         .pipe(lambda df:set_col_as_index(df, '펀드코드'))
-        .pipe(remove_index_name)
+        # .pipe(remove_index_name)
     )
-
 
 def get_preprocessed_menu8186_snapshot(date_ref=None):
     return preprocess_raw_menu8186(load_menu8186_snapshot(date_ref=date_ref))
