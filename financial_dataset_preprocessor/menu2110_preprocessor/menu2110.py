@@ -8,6 +8,10 @@ def fill_class_with_nan(df):
     df['클래스'] = df['클래스'].fillna('-')
     return df
 
+def set_index_name_for_menu2110(df):
+    df.index.name = '펀드코드'
+    return df
+
 def preprocess_raw_menu2110(menu2110: DataFrame) -> DataFrame:
     return (
         menu2110
@@ -17,7 +21,7 @@ def preprocess_raw_menu2110(menu2110: DataFrame) -> DataFrame:
         .pipe(fill_class_with_nan)
         .pipe(lambda df: df.rename_axis('펀드명').reset_index())
         .pipe(lambda df: set_col_as_index(df, '펀드'))
-        .pipe(remove_index_name)
+        .pipe(set_index_name_for_menu2110)
     )
 
 def get_preprocessed_menu2110(date_ref=None):

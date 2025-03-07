@@ -4,12 +4,16 @@ from .menu2205_column_preprocessor import get_preprocessed_column_names_menu2205
 from .menu2205_value_preprocessor import preprocess_cols_num_menu2205, preprocess_cols_int_menu2205
 from ..column_preprocessor_basis import remove_index_name, drop_first_row
 
+def set_index_name_for_menu2205(df):
+    df.index.name = '일자'
+    return df
+
 def preprocess_raw_menu2205(menu2205: DataFrame) -> DataFrame:
     return (
         menu2205
         .copy()
         .pipe(lambda df: df.set_axis(get_preprocessed_column_names_menu2205(df), axis=1))
-        .pipe(remove_index_name)
+        .pipe(set_index_name_for_menu2205)
         .pipe(drop_first_row)
         .pipe(preprocess_cols_num_menu2205)
         .pipe(preprocess_cols_int_menu2205)

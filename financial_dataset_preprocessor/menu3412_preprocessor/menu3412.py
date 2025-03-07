@@ -3,9 +3,12 @@ from financial_dataset_loader import load_menu_snapshot
 from .menu3412_column_preprocessor import get_preprocessed_column_names_menu3412
 from ..row_preprocessor import drop_non_indexed_rows
 
-
 def keep_last_duplicate_index(df: DataFrame) -> DataFrame:
    return df[~df.index.duplicated(keep='last')]
+
+def set_index_name_for_menu3412(df: DataFrame) -> DataFrame:
+    df.index.name = '펀드코드'
+    return df
 
 def preprocess_raw_menu3412(menu3412: DataFrame) -> DataFrame:
     return (
@@ -13,6 +16,7 @@ def preprocess_raw_menu3412(menu3412: DataFrame) -> DataFrame:
         .copy()
         .pipe(lambda df: df.set_axis(get_preprocessed_column_names_menu3412(df), axis=1))
         .pipe(keep_last_duplicate_index)
+        .pipe(set_index_name_for_menu3412)
     )
 
 
