@@ -1,5 +1,5 @@
 pandas
 tqdm
-string_date_controller
-financial_dataset_loader >= 0.2.3
-canonical_transformer >= 0.2.3
+string_date_controller>=0.1.1
+financial_dataset_loader>=0.2.3
+canonical_transformer>=0.2.4
