@@ -112,26 +112,26 @@ def get_dfs_by_fund_class(date_ref=None):
     df = get_preprocessed_menu2110(date_ref=date_ref)
     return dict(tuple(df.groupby('클래스구분')))
 
-def get_preprocessed_funds_by_fund_class(class_name, date_ref=None):
-    df = get_dfs_by_fund_class(date_ref=date_ref)[class_name]
+def get_preprocessed_funds_by_fund_class(fund_class, date_ref=None):
+    df = get_dfs_by_fund_class(date_ref=date_ref)[fund_class]
     return df
 
 FUND_CLASSES = ['운용펀드', '-', '일반', '클래스펀드']
 
 def get_preprocessed_funds_mother(date_ref=None):
-    df = get_preprocessed_funds_by_fund_class(class_name='운용펀드', date_ref=date_ref)
+    df = get_preprocessed_funds_by_fund_class(fund_class='운용펀드', date_ref=date_ref)
     return df
 
 def get_preprocessed_funds_general(date_ref=None):
-    df = get_preprocessed_funds_by_fund_class(class_name='일반', date_ref=date_ref)
+    df = get_preprocessed_funds_by_fund_class(fund_class='일반', date_ref=date_ref)
     return df
 
 def get_preprocessed_funds_nonclassified(date_ref=None):
-    df = get_preprocessed_funds_by_fund_class(class_name='-', date_ref=date_ref)
+    df = get_preprocessed_funds_by_fund_class(fund_class='-', date_ref=date_ref)
     return df
 
 def get_preprocessed_funds_class(date_ref=None):
-    df = get_preprocessed_funds_by_fund_class(class_name='클래스펀드', date_ref=date_ref)
+    df = get_preprocessed_funds_by_fund_class(fund_class='클래스펀드', date_ref=date_ref)
     return df
 
 def get_preprocessed_funds_main(date_ref=None):
