@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='financial_dataset_preprocessor',
-    version='0.2.8',
+    version='0.2.9',
     packages=find_packages(),
     install_requires=[
         'pandas',

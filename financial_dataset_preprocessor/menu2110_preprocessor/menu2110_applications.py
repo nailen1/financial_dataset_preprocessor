@@ -79,8 +79,6 @@ def get_dfs_by_fund_type(date_ref=None):
     df = get_preprocessed_menu2110(date_ref=date_ref)
     return dict(tuple(df.groupby('펀드분류')))
 
-FUND_TYPES = ['변액', '주식형', '주식혼합', '채권혼합', '혼합자산']
-
 def get_preprocessed_funds_by_fund_type(fund_type, date_ref=None):
     df = get_dfs_by_fund_type(date_ref=date_ref)[fund_type]
     return df
@@ -109,3 +107,33 @@ def filter_df_by_fund_codes_main(df, date_ref=None):
     fund_codes_main = get_fund_codes_main(date_ref=date_ref)
     df = df[df.index.isin(fund_codes_main)]
     return df
+
+def get_dfs_by_fund_class(date_ref=None):
+    df = get_preprocessed_menu2110(date_ref=date_ref)
+    return dict(tuple(df.groupby('클래스구분')))
+
+def get_preprocessed_funds_by_fund_class(class_name, date_ref=None):
+    df = get_dfs_by_fund_class(date_ref=date_ref)[class_name]
+    return df
+
+FUND_CLASSES = ['운용펀드', '-', '일반', '클래스펀드']
+
+def get_preprocessed_funds_mother(date_ref=None):
+    df = get_preprocessed_funds_by_fund_class(class_name='운용펀드', date_ref=date_ref)
+    return df
+
+def get_preprocessed_funds_general(date_ref=None):
+    df = get_preprocessed_funds_by_fund_class(class_name='일반', date_ref=date_ref)
+    return df
+
+def get_preprocessed_funds_nonclassified(date_ref=None):
+    df = get_preprocessed_funds_by_fund_class(class_name='-', date_ref=date_ref)
+    return df
+
+def get_preprocessed_funds_class(date_ref=None):
+    df = get_preprocessed_funds_by_fund_class(class_name='클래스펀드', date_ref=date_ref)
+    return df
+
+def get_preprocessed_funds_main(date_ref=None):
+    df_main = filter_df_by_fund_codes_main(get_preprocessed_menu2110(date_ref=date_ref), date_ref=date_ref)
+    return df_main
