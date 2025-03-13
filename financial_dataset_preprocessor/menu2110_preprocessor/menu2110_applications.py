@@ -69,3 +69,43 @@ def get_fund_codes_main(date_ref=None):
     df = df[df['클래스구분']!='클래스펀드']
     fund_codes = list(df.index)
     return fund_codes
+
+def get_preprocessed_funds_main(date_ref=None):
+    menu2110 = get_preprocessed_menu2110(date_ref=date_ref)
+    df = menu2110[menu2110['클래스구분']!='클래스펀드']
+    return df
+
+def get_dfs_by_fund_type(date_ref=None):
+    df = get_preprocessed_menu2110(date_ref=date_ref)
+    return dict(tuple(df.groupby('펀드분류')))
+
+FUND_TYPES = ['변액', '주식형', '주식혼합', '채권혼합', '혼합자산']
+
+def get_preprocessed_funds_by_fund_type(fund_type, date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)[fund_type]
+    return df
+
+def get_preprocessed_funds_variable_type(date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)['변액']
+    return df
+
+def get_preprocessed_funds_equity_type(date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)['주식형']
+    return df
+
+def get_preprocessed_funds_equity_mixed_type(date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)['주식혼합']
+    return df
+
+def get_preprocessed_funds_bond_mixed_type(date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)['채권혼합']
+    return df
+
+def get_preprocessed_funds_multi_asset_type(date_ref=None):
+    df = get_dfs_by_fund_type(date_ref=date_ref)['혼합자산']
+    return df
+
+def filter_df_by_fund_codes_main(df, date_ref=None):
+    fund_codes_main = get_fund_codes_main(date_ref=date_ref)
+    df = df[df.index.isin(fund_codes_main)]
+    return df
