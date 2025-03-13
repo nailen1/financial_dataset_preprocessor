@@ -12,4 +12,5 @@ from .menu8186_preprocessor import *
 from .bbg_timeseries_preprocessor import *
 from .column_preprocessor_basis import *
 from .universal_applications import *
+from .mongodb_preprocessor import *
 from financial_dataset_loader import *

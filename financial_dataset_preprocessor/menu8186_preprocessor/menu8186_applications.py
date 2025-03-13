@@ -9,12 +9,12 @@ def get_data_of_columns_menu8186(cols, date_ref=None, option_sort=None, ascendin
     data = map_df_to_some_data(menu8186_snapshot, cols)
     return data
 
-def get_data_for_mapping_menu8186(col_for_range, col_for_domain='index', date_ref=None):   
+def get_data_for_mapping_menu8186(col_for_range, col_for_domain='펀드코드', date_ref=None):   
     cols_domain_range = [col_for_domain, col_for_range]
     data = get_data_of_columns_menu8186(cols=cols_domain_range, date_ref=date_ref)
     return data
 
-def get_mapping_menu8186(col_for_range, col_for_domain='index', date_ref=None):
+def get_mapping_menu8186(col_for_range, col_for_domain='펀드코드', date_ref=None):
     data = get_data_for_mapping_menu8186(col_for_range=col_for_range, col_for_domain=col_for_domain, date_ref=date_ref)
     mapping = {datum[col_for_domain]: datum[col_for_range] for datum in data}
     return mapping
@@ -25,7 +25,7 @@ def show_all_somethings_for_data_menu8186():
     print(data)
     return data
 
-def get_mapping_fund_to_something_by_date(something, col_for_domain='index', date_ref=None):
+def get_mapping_fund_to_something_by_date(something, col_for_domain='펀드코드', date_ref=None):
     return get_mapping_menu8186(col_for_range=something, col_for_domain=col_for_domain, date_ref=date_ref)
 
 def get_all_mappings_to_fund_by_date(date_ref=None):
@@ -35,7 +35,7 @@ def get_all_mappings_to_fund_by_date(date_ref=None):
     for something in somethings[1:]:
         df = df_ref.loc[:, something].reset_index()
         data = map_df_to_data(df)
-        mapping = {datum['index']: datum[something] for datum in data}
+        mapping = {datum['펀드코드']: datum[something] for datum in data}
         dct[something] = mapping
     return dct
 
@@ -44,13 +44,13 @@ def get_all_fund_codes(date_ref=None):
     fund_codes = list(menu8186_snapshot.index.unique())
     return fund_codes
 
-def get_all_fund_names(date_ref=None):
+def get_mapping_fund_names(date_ref=None):
     return get_mapping_menu8186(col_for_range='펀드명', date_ref=date_ref)
 
-def get_all_fund_prices(date_ref=None):
+def get_mapping_fund_prices(date_ref=None):
     return get_mapping_menu8186(col_for_range='수정기준가', date_ref=date_ref)
 
-def get_all_fund_nav(date_ref=None):
+def get_mapping_fund_nav(date_ref=None):
     return get_mapping_menu8186(col_for_range='순자산', date_ref=date_ref)
 
 def search_something_of_fund_by_date(something, fund_code, date_ref=None):
