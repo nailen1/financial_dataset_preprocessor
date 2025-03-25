@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='financial_dataset_preprocessor',
-    version='0.3.1',
+    version='0.3.2',
     packages=find_packages(),
     install_requires=[
         'pandas',
         'tqdm',
-        'string_date_controller>=0.1.1',
+        'string_date_controller>=0.1.3',
         'shining_pebbles>=0.4.3',
         'aws_s3_controller>=0.7.5',
         'financial_dataset_loader>=0.2.6',
