@@ -1,19 +1,13 @@
 from setuptools import setup, find_packages
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 setup(
     name='financial_dataset_preprocessor',
-    version='0.3.3',
+    version='0.3.4',
     packages=find_packages(),
-    install_requires=[
-        'pandas',
-        'tqdm',
-        'string_date_controller>=0.1.3',
-        'shining_pebbles>=0.4.3',
-        'aws_s3_controller>=0.7.5',
-        'financial_dataset_loader>=0.2.6',
-        'canonical_transformer>=0.2.4',
-        'mongodb_controller>=0.2.1',
-    ],
+    install_requires=required,
     author='June Young Park',
     author_email='juneyoungpaak@gmail.com',
     description='A package for preprocessing financial datasets, powering the Life Asset Management development team.',

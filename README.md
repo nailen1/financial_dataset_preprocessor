@@ -10,6 +10,15 @@ A Python package for preprocessing financial datasets from various sources. This
   - Domestic Bonds Analysis
   - Repo Agreement Processing
   - Borrowings Management
+- Menu 2206 Preprocessor
+  - Fund Portfolio Analysis
+  - Investment Asset Classification
+- Bloomberg Time Series Preprocessor
+  - Index Data Processing
+  - Currency Data Processing
+- Time Series Utilities
+  - Date Range Operations
+  - Time Series Extension
 - Additional preprocessors for other financial datasets (coming soon)
 
 ## Installation
