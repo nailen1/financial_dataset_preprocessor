@@ -8,6 +8,12 @@ def set_index_name_for_menu2206(df):
     df.index.name = '일자'
     return df
 
+def rename_columns_for_menu2206(df):
+    df = df.rename(columns={
+        '펀드': '펀드코드',
+    })
+    return df
+
 def preprocess_raw_menu2206(menu2206: DataFrame) -> DataFrame:
     return (
         menu2206
@@ -17,6 +23,7 @@ def preprocess_raw_menu2206(menu2206: DataFrame) -> DataFrame:
         .pipe(drop_first_row)
         .pipe(preprocess_cols_num_menu2206)
         .pipe(preprocess_cols_int_menu2206)
+        .pipe(rename_columns_for_menu2206)
     )
 
 def get_preprocessed_menu2206(date_ref=None):

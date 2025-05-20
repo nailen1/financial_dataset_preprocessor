@@ -2,6 +2,18 @@
 
 A Python package for preprocessing financial datasets from various sources. This package provides tools and utilities for cleaning, transforming, and preparing financial data for analysis.
 
+## Version Updates
+
+### v0.3.5 (2025-05-20)
+- Enhanced Menu 2206 preprocessor with column renaming functionality
+- Improved fund code handling in portfolio analysis
+
+### v0.3.4 (2025-05-20)
+- Added Menu 2206 preprocessor module
+- Added time series basis utilities
+- Added Bloomberg time series preprocessor
+- Enhanced integration with universal_timeseries_transformer
+
 ## Features
 
 - Menu 2205 Preprocessor
