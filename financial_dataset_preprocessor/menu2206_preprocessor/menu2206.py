@@ -9,9 +9,11 @@ def set_index_name_for_menu2206(df):
     return df
 
 def rename_columns_for_menu2206(df):
-    df = df.rename(columns={
-        '펀드': '펀드코드',
-    })
+    return df.rename(columns={'펀드': '펀드코드'})
+
+def filter_some_columns_for_menu2206(df):
+    df = df[df['자산']!='펀드합계']
+    df = df[df['종목명']!='소계']
     return df
 
 def preprocess_raw_menu2206(menu2206: DataFrame) -> DataFrame:
@@ -24,6 +26,7 @@ def preprocess_raw_menu2206(menu2206: DataFrame) -> DataFrame:
         .pipe(preprocess_cols_num_menu2206)
         .pipe(preprocess_cols_int_menu2206)
         .pipe(rename_columns_for_menu2206)
+        .pipe(filter_some_columns_for_menu2206)
     )
 
 def get_preprocessed_menu2206(date_ref=None):

@@ -4,6 +4,10 @@ A Python package for preprocessing financial datasets from various sources. This
 
 ## Version Updates
 
+### v0.3.6 (2025-05-23)
+- Added filtering functionality to Menu 2206 preprocessor
+- Improved data quality by removing summary rows
+
 ### v0.3.5 (2025-05-20)
 - Enhanced Menu 2206 preprocessor with column renaming functionality
 - Improved fund code handling in portfolio analysis
