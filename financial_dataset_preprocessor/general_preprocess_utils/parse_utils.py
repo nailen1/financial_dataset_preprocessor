@@ -1,38 +1,53 @@
 
 import pandas as pd
 import numpy as np
+from typing import Union, Optional
 
+# 2025-05-26 refactored
+def is_missing_value(value) -> bool:
+    return pd.isna(value)
 
-def parse_commaed_number(value) -> float | None:
-   if pd.isna(value):
-       return None
-       
-   if isinstance(value, (int, float)):
-       return float(value)
-       
-   if isinstance(value, str):
-       # Remove whitespace and commas
-       cleaned = value.strip().replace(',', '')
-       
-       # Handle empty string
-       if not cleaned:
-           return None
-           
-       try:
-           return float(cleaned)
-       except ValueError:
-           return None
-           
-   # For any other type (e.g. numpy numbers)
-   try:
-       return float(value)
-   except (ValueError, TypeError):
-       return None
+def is_numeric_type(value) -> bool:
+    return isinstance(value, (int, float))
 
-def force_int(number):
-    if isinstance(number, float) and number.is_integer():
-        return int(number)
-    return number
+def is_string_type(value) -> bool:
+    return isinstance(value, str)
+
+def clean_string_number(text: str) -> str:
+    return text.strip().replace(',', '')
+
+def is_empty_string(text: str) -> bool:
+    return not text
+
+def try_convert_to_float(value) -> Optional[float]:
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return None
+
+def convert_string_to_float(text: str) -> Optional[float]:
+    cleaned = clean_string_number(text)
+    return None if is_empty_string(cleaned) else try_convert_to_float(cleaned)
+
+def parse_commaed_number(value) -> Optional[float]:
+    if is_missing_value(value):
+        return None
+    if is_numeric_type(value):
+        return float(value)
+    if is_string_type(value):
+        return convert_string_to_float(value)
+    return try_convert_to_float(value)
+
+def is_integer_float(number: Optional[float]) -> bool:
+    return isinstance(number, float) and number.is_integer()
+
+def convert_float_to_int(number: float) -> int:
+    return int(number)
+
+def force_int(number) -> Union[int, float, None]:
+    parsed = parse_commaed_number(number)
+    return convert_float_to_int(parsed) if is_integer_float(parsed) else parsed
+
 
 def transform_fund_code_float_to_string(fund_code):    
     if pd.isna(fund_code):
