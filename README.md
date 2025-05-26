@@ -4,6 +4,11 @@ A Python package for preprocessing financial datasets from various sources. This
 
 ## Version Updates
 
+### v0.3.7 (2025-05-26)
+- Refactored parse_utils module for better modularity
+- Added type hints for improved code quality
+- Enhanced number parsing functionality
+
 ### v0.3.6 (2025-05-23)
 - Added filtering functionality to Menu 2206 preprocessor
 - Improved data quality by removing summary rows
