@@ -4,6 +4,10 @@ A Python package for preprocessing financial datasets from various sources. This
 
 ## Version Updates
 
+### v0.3.8 (2025-06-26)
+- Enhanced stability of Menu 3233 preprocessor
+- Improved custom index creation functionality
+
 ### v0.3.7 (2025-05-26)
 - Refactored parse_utils module for better modularity
 - Added type hints for improved code quality

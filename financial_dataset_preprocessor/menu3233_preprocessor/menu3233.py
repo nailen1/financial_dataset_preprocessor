@@ -4,7 +4,10 @@ from .menu3233_value_preprocessor import preprocess_cols_num_menu3233
 from ..column_preprocessor_basis import remove_index_name, set_col_as_index
 
 def set_custom_index(df: DataFrame) -> DataFrame:
-    return df.set_index(df['펀드코드'] + '-' + df['판매사'].str.replace(' ',''))
+    def create_index_name(row):
+        return str(row['펀드코드']) + '-' + row['판매사'].str.replace(' ','')
+    custom_index_name = df.apply(create_index_name, axis=1)
+    return df.set_index(custom_index_name)
 
 def preprocess_raw_menu3233(menu3233: DataFrame) -> DataFrame:
     return (
