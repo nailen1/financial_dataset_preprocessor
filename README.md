@@ -4,6 +4,12 @@ A Python package for preprocessing financial datasets from various sources. This
 
 ## Version Updates
 
+### v0.4.0 (2025-01-27)
+
+- Removed virtual environment folder from Git repository
+- Cleaned up unnecessary number conversion columns for Menu 2206
+- Enhanced data preprocessing accuracy and consistency
+
 ### v0.3.9 (2025-01-27)
 
 - Updated industry classification column preprocessing format for Menu 2206
