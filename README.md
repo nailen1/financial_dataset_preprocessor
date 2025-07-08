@@ -4,24 +4,34 @@ A Python package for preprocessing financial datasets from various sources. This
 
 ## Version Updates
 
+### v0.3.9 (2025-01-27)
+
+- Updated industry classification column preprocessing format for Menu 2206
+- Enhanced data consistency and standardization
+
 ### v0.3.8 (2025-06-26)
+
 - Enhanced stability of Menu 3233 preprocessor
 - Improved custom index creation functionality
 
 ### v0.3.7 (2025-05-26)
+
 - Refactored parse_utils module for better modularity
 - Added type hints for improved code quality
 - Enhanced number parsing functionality
 
 ### v0.3.6 (2025-05-23)
+
 - Added filtering functionality to Menu 2206 preprocessor
 - Improved data quality by removing summary rows
 
 ### v0.3.5 (2025-05-20)
+
 - Enhanced Menu 2206 preprocessor with column renaming functionality
 - Improved fund code handling in portfolio analysis
 
 ### v0.3.4 (2025-05-20)
+
 - Added Menu 2206 preprocessor module
 - Added time series basis utilities
 - Added Bloomberg time series preprocessor
