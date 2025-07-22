@@ -5,7 +5,7 @@ from ..column_preprocessor_basis import remove_index_name, set_col_as_index
 
 def set_custom_index(df: DataFrame) -> DataFrame:
     def create_index_name(row):
-        return str(row['펀드코드']) + '-' + row['판매사'].str.replace(' ','')
+        return str(row['펀드코드']) + '-' + str(row['판매사']).replace(' ','')
     custom_index_name = df.apply(create_index_name, axis=1)
     return df.set_index(custom_index_name)
 
