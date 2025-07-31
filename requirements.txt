@@ -5,4 +5,4 @@ financial_dataset_loader>=0.2.7
 canonical_transformer>=0.2.4
 mongodb_controller>=0.2.1
 aws_s3_controller>=0.7.5
-universal_timeseries_transformer>=0.1.1
+universal_timeseries_transformer>=1.0.5

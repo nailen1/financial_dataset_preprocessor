@@ -9,6 +9,7 @@ from .menu3233_preprocessor import *
 from .menu3412_preprocessor import *
 from .menu3421_preprocessor import *
 from .menu4165_preprocessor import *
+from .menu5105_preprocessor import *
 from .menu8186_preprocessor import *
 from .column_preprocessor_basis import *
 from .universal_applications import *
