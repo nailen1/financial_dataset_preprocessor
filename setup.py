@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='financial_dataset_preprocessor',
-    version='0.4.3',
+    version='0.4.4',
     packages=find_packages(),
     install_requires=required,
     author='June Young Park',
