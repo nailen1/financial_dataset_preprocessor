@@ -3,7 +3,7 @@ from canonical_transformer.functionals import pipe
 from canonical_transformer.morphisms import map_df_to_data
 
 def load_menu5105(date_ref=None):
-    regex = 'code000005' if date_ref is None else f'code000005-.*to{date_ref}'
+    regex = 'code000005' if date_ref is None else f'code000005-.*to{date_ref.replace("-", "")}'
     file_names = sorted(scan_files_in_bucket_by_regex(bucket='dataset-system', bucket_prefix='dataset-menu5105', regex=regex, option='name'))
     raw = load_csv_in_bucket(bucket='dataset-system', bucket_prefix='dataset-menu5105', regex=file_names[-1])
     return raw
